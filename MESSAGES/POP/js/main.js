@@ -28,16 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
         iconDiv.classList.add('msg_icon', 'text-center', 'w-100');
         let iconHTML = '';
         if (type === 'success') {
-            iconDiv.classList.add('success')
+            iconDiv.classList.add('success');
             iconHTML = '<i class="fa-solid fa-circle-check"></i>';
         } else if (type === 'error') {
-            iconDiv.classList.add('error')
+            iconDiv.classList.add('error');
             iconHTML = '<i class="fa-solid fa-circle-xmark"></i>';
         } else if (type === 'info') {
-            iconDiv.classList.add('info')
+            iconDiv.classList.add('info');
             iconHTML = '<i class="fa-solid fa-circle-info"></i>';
         } else if (type === 'warning') {
-            iconDiv.classList.add('warning')
+            iconDiv.classList.add('warning');
             iconHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
         }
         iconDiv.innerHTML = iconHTML;
@@ -46,7 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // create card-title
         const cardTitle = document.createElement('h4');
         cardTitle.classList.add('text-center', 'card-title');
-        cardTitle.innerText = type.charAt(0).toUpperCase() + type.slice(1); // Capitalizing the first letter
+        cardTitle.innerText = type.charAt(0).toUpperCase() + type.slice(1);
+        if (type === 'success') {
+            cardTitle.classList.add('text-success');
+        } else if (type === 'error') {
+            cardTitle.classList.add('text-danger');
+        } else if (type === 'info') {
+            cardTitle.classList.add('text-info');
+        } else if (type === 'warning') {
+            cardTitle.classList.add('text-warning');
+        }
         msgDiv.appendChild(cardTitle);
 
         // create card-text
@@ -65,26 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('btn', 'btn-primary', 'btn-no-radious', 'button');
         btn.innerText = 'OK';
         btn.onclick = () => {
-            handleClick(midleDiv, mainDiv); // Call handleClick when button is clicked
+            handleClick(midleDiv, mainDiv);
         };
         btnDiv.appendChild(btn);
 
         // Add event listener to close the popup when clicking outside midleDiv
         mainDiv.addEventListener('click', (e) => {
             if (!midleDiv.contains(e.target)) {
-                handleClick(midleDiv, mainDiv); // Call handleClick if click is outside midleDiv
+                handleClick(midleDiv, mainDiv);
             }
         });
     };
 
     // Function to handle button click and fade out popup
-    function handleClick(midleDiv, mainDiv) {
-        midleDiv.classList.add('fadout');  // Add fade-out class
+    const handleClick = (midleDiv, mainDiv) => {
+        midleDiv.classList.add('fadout'); // Add fade-out class
 
         // Delay removal of mainDiv by 300ms
         setTimeout(() => {
             mainDiv.remove();
             console.log('Popup closed');
         }, 300);
-    }
+    };
 });
