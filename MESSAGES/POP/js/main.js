@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // create midle div
         const midleDiv = document.createElement('div');
-        midleDiv.classList.add('midle_div', 'm-2', 'card', 'align-self-center', 'col-md-4', 'col-sm-6');
+        midleDiv.classList.add('midle_div', 'm-2', 'card', 'align-self-center', 'col-md-4', 'col-sm-6', 'col-xs-11');
         row.appendChild(midleDiv);
 
         // create msgDiv
