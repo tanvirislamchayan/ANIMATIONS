@@ -22,7 +22,10 @@
     border-radius: .3rem !important;
     transform: scale(0);
     opacity: 0;
-    animation: popUp .3s ease-out forwards
+    animation: popUp .3s ease-out forwards;
+    position: relative;
+    border-radius: .3rem !important;
+    overflow: hidden;
 }
 
 .midle_div.fadout {
@@ -86,3 +89,22 @@
 .card-title {
     text-shadow: 0px 0px 20px #0005;
 }
+
+.progressBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    animation: progressbar 3s .3s linear forwards;
+}
+
+@keyframes progressbar {
+    0% {
+        width: 100%;
+    }
+     100% {
+        width: 0%;
+     }
+}
+

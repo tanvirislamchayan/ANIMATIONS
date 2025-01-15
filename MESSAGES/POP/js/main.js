@@ -64,19 +64,45 @@ document.addEventListener('DOMContentLoaded', () => {
         CardTxt.innerText = msg;
         msgDiv.appendChild(CardTxt);
 
-        // create buttonDiv
-        const btnDiv = document.createElement('div');
-        btnDiv.classList.add('msg-btn', 'd-flex', 'justify-content-end', 'mb-2');
-        msgDiv.appendChild(btnDiv);
+        if (type === 'error' || type === 'warning'){
+            // create buttonDiv
+            const btnDiv = document.createElement('div');
+            btnDiv.classList.add('msg-btn', 'd-flex', 'justify-content-end', 'mb-2');
+            msgDiv.appendChild(btnDiv);
 
-        // create button
-        const btn = document.createElement('button');
-        btn.classList.add('btn', 'btn-primary', 'btn-no-radious', 'button');
-        btn.innerText = 'OK';
-        btn.onclick = () => {
-            handleClick(midleDiv, mainDiv);
-        };
-        btnDiv.appendChild(btn);
+            // create button
+            const btn = document.createElement('button');
+            btn.classList.add('btn', 'btn-primary', 'btn-no-radious', 'button');
+            btn.innerText = 'OK';
+            btn.onclick = () => {
+                handleClick(midleDiv, mainDiv);
+            };
+            btnDiv.appendChild(btn);
+        } else if (type === 'success' || type === 'info') {
+            const space = document.createElement('div');
+            space.classList.add('my-2');
+            midleDiv.appendChild(space)
+            const progressBar = document.createElement('div');
+            progressBar.classList.add('progressBar');
+        
+            // Add specific background class based on the type
+            if (type === 'success') {
+                progressBar.classList.add('bg-success');
+            } else if (type === 'info') {
+                progressBar.classList.add('bg-info');
+            }
+        
+            // Append the progress bar to midleDiv
+            midleDiv.appendChild(progressBar);
+
+            setTimeout(() => {
+                handleClick(midleDiv, mainDiv);
+                console.log('Popup closed');
+            }, 3400);
+        }
+        
+
+
 
         // Add event listener to close the popup when clicking outside midleDiv
         mainDiv.addEventListener('click', (e) => {

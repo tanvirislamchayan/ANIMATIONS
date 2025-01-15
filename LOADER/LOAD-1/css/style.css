@@ -14,7 +14,7 @@
     bottom: 0;
     top: 0;
     /* background-color: red; */
-    z-index: 1000;
+    z-index: 10000;
     display: grid;
     place-items: center;
     place-content: center;
